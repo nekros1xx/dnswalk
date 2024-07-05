@@ -239,7 +239,7 @@ sub check_zone {
 			    if ((split(/\./,$name))[0] ne "localhost");
 		}
 	    }
-	    if ($main'opt_a) {
+	    if ($main::opt_a) {
 		# keep list in %glues, report any duplicates
 		if ($glues{$rr->address} eq "") {
 		    $glues{$rr->address}=$rr->name;
@@ -254,7 +254,7 @@ sub check_zone {
             $lastns=$rr->name;
             print STDERR 'n' if $opt_d;
             # check to see if object of NS is real
-            &checklamer($rr->name,$rr->nsdname) if ($main'opt_l);
+            &checklamer($rr->name,$rr->nsdname) if ($main::opt_l);
 	    # check for bogusnesses like NS->IP addr
 	    if (&isipv4addr($rr->nsdname)) {
 		&printerr("BAD", $rr->name
